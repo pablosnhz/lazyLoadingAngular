@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./modules/pages/profile/profile.module').then(m => m.ProfileModule)
   },
+  {
+    path: 'socials',
+    loadChildren: () => import ('./modules/socials/socials.module').then(m => m.SocialsModule)
+  },
   //siempre el 404 se pondra en el modulo de enrutado principal
   {
     path: '**',

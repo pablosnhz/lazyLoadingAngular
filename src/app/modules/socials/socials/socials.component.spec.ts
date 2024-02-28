@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginPageComponent } from './login-page.component';
+import { SocialsComponent } from './socials.component';
 
-describe('LoginPageComponent', () => {
-  let component: LoginPageComponent;
-  let fixture: ComponentFixture<LoginPageComponent>;
+describe('SocialsComponent', () => {
+  let component: SocialsComponent;
+  let fixture: ComponentFixture<SocialsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginPageComponent]
+      declarations: [SocialsComponent]
     });
-    fixture = TestBed.createComponent(LoginPageComponent);
+    fixture = TestBed.createComponent(SocialsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
