@@ -11,6 +11,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
+// PREALODING
+import { OptInPreloadingStrategy } from './preloading-strategies/opt-in-preloading-strategy';
+import { NetworkAwarePreloadStrategy } from './preloading-strategies/network-aware-preloading-strategy';
+import { OnDemandPreloadingStrategy } from './preloading-strategies/on-demand-preloading-strategy';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,12 @@ import { MatListModule } from '@angular/material/list';
     // pero lo sacamos porque lo importamos en el otro
     // AuthFormsModule
   ],
-  providers: [],
+  providers: [
+    // Disponemos las estrategias de precarga... Importamos el OPT-IN-PREALODING-STRATEGY.TS
+    OptInPreloadingStrategy,
+    NetworkAwarePreloadStrategy,
+    OnDemandPreloadingStrategy
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

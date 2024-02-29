@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { PreloadingService } from 'src/app/services/preloading-service.service';
 
 @Component({
   selector: 'app-nav',
@@ -17,4 +18,15 @@ export class NavComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+    constructor( private preloadingService: PreloadingService ){}
+
+    cargarModulo(route: string){
+      this.preloadingService.comenzarPrecarga(route);
+    }
+
+    //  todos los modulos
+    cargarTodosLosModulos(){
+      this.preloadingService.comenzarPrecarga('*');
+    }
 }

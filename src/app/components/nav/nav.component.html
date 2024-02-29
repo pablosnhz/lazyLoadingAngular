@@ -6,8 +6,9 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home">Home</a>
-      <a mat-list-item routerLink="/profile">Profile</a>
-      <a mat-list-item routerLink="/auth">Login</a>
+      <!-- boton para precargar Modulos individuales como profile o auth -->
+      <a mat-list-item routerLink="/profile" (mouseover)="cargarModulo('profile')">Profile</a>
+      <a mat-list-item routerLink="/auth" (mouseover)="cargarModulo('profile')">Login</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +21,14 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ngModules</span>
+      <span>Carga Perezosa y Sistemas de Precarga de Modulos en Angular</span>
+      <!-- boton para precargar Modulos individuales como profile o auth -->
+
+      <!-- aca los reemplace y los coloque mas arriba... -->
+      <!-- <button (click)="cargarModulo('profile')">Cargar profile</button> -->
+      <!-- <button (click)="cargarModulo('auth')">Precargar Modulo Auth</button> -->
+      <!-- boton para precargar todos los modulos de la aplicacion -->
+      <button mat-button color="warn" (click)="cargarTodosLosModulos()">Cargar todos los modulos</button>
     </mat-toolbar>
     <!-- Add Content Here -->
 <!-- SISTEMA ENRUTADO DE MODULOS CARGADOS DE FORMA PEREZOSA -->
