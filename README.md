@@ -8,7 +8,7 @@ Tambien hice uso de cargas perezosas de cargas perezosas, que se almacenan una d
 
 Hice uso de una navigation nav de Angular Material agregandole el router-outlet para asi darle estilo.
 
-Estrategias de Precarga:
+ESTRATEGIAS DE PRECARGA:
 Antes nos permitia cargar de manera perezosa nuestros modulos, pero ahora tenemos la precarga que carga todos.
 
 OPT IN PREALODING STRATEGY que lo aplicamos de modo ejemplo en Profile
@@ -23,3 +23,13 @@ Puede traer todos los modulos si, es porque se hace la prueba si los modulos son
 NO OLVIDAR COLOCAR EL PRELOAD EN CASO DE USARLO EN OTRO CASO.
 
 ON DEMAND PRELOADING STRATEGY
+carga de rutas personalizada siempre y cuando reciba ciertos parametros y ademas eventos que lo lleve a cabo, esto carga de tener en su caso el data preload en true pero en uno o diversos modulos.
+Creamos un servicio para hacer uso de un subject el cual vamos a emitir el valor de que si queremos o no que cargue una ruta en especifica o queremos que carguen todas. Como tambien accionar mediante click, hover, long press... cualquier etiqueta o uso de ese modulo, el accionarlo. Predecimos que accion va a tomar va a tomar el usuario y asi anticiparnos a cargar el modulo para una mejor navegacion.
+Tomamos los datos del services para crear funciones y asi saber si queremos que no cargue ese modulo con el data preload true. Para activarlo en este caso hicimos uso de un mouseHover y un evento de click el cual va a cargar diversas cosas en base al OnDemand que carga un modulo en especifico siempre y cuando este el data preload true o podria traer todos los modulos por medio del '\*' el cual definimos en el ts.
+
+Repasando y explicando con mis palabras como genere las estrategias de Precarga que tiene diversas funcionalidades (las llamamos dentro del routing principal con preloadingStrategy):
+1 - Con el PreloadModules este preload nos va a permitir cargar todos los modulos a la vez sin la necesidad de entrar al modulo, una vez iniciada la pagina ya van a estar todos los modulos cargados, a pesar de hacer uso de data preload true o false.
+2 - El :NoPreloading fuerza la carga perezosa, que quiere decir? que va a tener que navegar a esa ruta para que cargue.
+3 - OPTIN STRATEGY sirva para que si dentro de data: preload esta en true, aparece precargado y en el caso de false, deja de ser lazyloading y carga una vez navegemos al modulo.
+4 - En el caso de NETWORK AWARE STRATEGY podemos limitar modulos de carga en base a la conexion del usuario en el caso de ser inestable, sin tener internet o limitarlo solo para listar solo ciertas lista de conexiones ejemplo, solo para 4G y 5G, en el caso de ser inferior a estas solo se cargaran los modulos necesarios.
+5 - ON DEMAND STRATEGY nos permite especificar que datos nos va a cargar en base a un evento, de click por ejemplo siempre y cuando tenga el data preload en true, asi poder cargar el modulo e hacer la interaccion cargando en el network.
